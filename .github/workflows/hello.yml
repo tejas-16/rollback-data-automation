@@ -1,0 +1,4 @@
+def sum(a,b):
+  retun a+b
+
+print("the sum is" , sum(8,6))
