@@ -16,5 +16,5 @@ jobs:
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: 'Manual Email Trigged'
           body: 'This email was sent manually via GitHub Actions.'
-          to: recipient@example.com
+          to: crownardio@gmail.com
           from: ${{ secrets.EMAIL_USERNAME }}
