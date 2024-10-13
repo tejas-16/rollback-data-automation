@@ -14,6 +14,6 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: 'KIAS2000 Migration Mail'
-          body: 'Hello Team, We have Fasttracked Planned for tomarrow at so and so date. Could you please confirm is there any activity planned during this hours?'
+          body: 'Hello Team, We have Fasttracked Planned for tomarrow at so and so date.'
           to: crownardio@example.com
           from: ${{ secrets.EMAIL_USERNAME }}
