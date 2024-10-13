@@ -15,5 +15,5 @@ jobs:
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: 'KIAS2000 Migration Mail'
           body: 'Hello , How Are you!'
-          to: sahibakaw2019@gmail.com
+          to: ${{secrets.EMAIL_TO }}
           from: ${{ secrets.EMAIL_USERNAME }}
