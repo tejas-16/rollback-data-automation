@@ -2,7 +2,7 @@ name: Send Email Manually
 
 on:
   workflow_dispatch:
-  inputs:
+    inputs:
       email_date:
         description: 'Date of the email (format: YYYY-MM-DD)'
         required: true
