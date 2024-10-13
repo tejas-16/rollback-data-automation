@@ -2,7 +2,11 @@ name: Send Email Manually
 
 on:
   workflow_dispatch:
-
+  inputs:
+      email_date:
+        description: 'Date of the email (format: YYYY-MM-DD)'
+        required: true
+        default: $(date +%Y-%m-%d)
 jobs:
   send_email:
     runs-on: ubuntu-latest
@@ -14,7 +18,7 @@ jobs:
           server_port: 587
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: 'Manual Email Trigged'
+          subject: 'KIAS2000 Migration on ${{ github.event.inputs.email_date }} '
           body: 'This email was sent manually via GitHub Actions.'
           to: crownardio@gmail.com
           from: ${{ secrets.EMAIL_USERNAME }}
