@@ -11,9 +11,9 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 587
-          username: ${{ secrets.EMAIL_USERNAME }}
+          username: ${{ secrets.EMAIL_USERNAME }} 
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: 'KIAS2000 Migration Mail'
           body: 'Hello Team, We have Fasttracked Planned for tomarrow at so and so date.'
-          to: crownardio@gmail.com
+          to: sahibakaw2019@gmail.com
           from: ${{ secrets.EMAIL_USERNAME }}
