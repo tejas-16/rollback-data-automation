@@ -7,7 +7,6 @@ on:
         description: 'Date of the email (format: YYYY-MM-DD)'
         required: true
         default: $(date +%Y-%m-%d)
-      alphanumeric_value:
       email_SRT:
         description: 'Emter the SRT Number'
         required: true
