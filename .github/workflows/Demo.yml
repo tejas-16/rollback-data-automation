@@ -8,9 +8,17 @@ on:
         required: true
         default: $(date +%Y-%m-%d)
       email_SRT:
-        description: 'Emter the SRT Number'
+        description: 'Enter the SRT Number'
         required: true
         default: "ABC123"
+      email_application:
+        description: 'Enter the application'
+        required: true
+        default: "unix"
+        type: choice
+        options:
+          - Unix
+          - Citrix
 jobs:
   send_email:
     runs-on: ubuntu-latest
@@ -23,6 +31,6 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: 'KIAS2000 Migration on ${{ github.event.inputs.email_date }} | ${{ github.event.inputs.email_SRT }} | Fasttrack'
-          body: ' Hello Team'
+          body: ' Hello Team, We have '
           to: crownardio@gmail.com
           from: ${{ secrets.EMAIL_USERNAME }}
