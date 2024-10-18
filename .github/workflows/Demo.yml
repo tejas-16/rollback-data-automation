@@ -22,7 +22,7 @@ jobs:
           server_port: 587
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: 'KIAS2000 Migration on ${{ github.event.inputs.email_date }} '
+          subject: 'KIAS2000 Migration on ${{ github.event.inputs.email_date }} | ${{ github.event.inputs.email_SRT }} | Fasttrack'
           body: 'This email was sent manually via GitHub Actions.'
           to: crownardio@gmail.com
           from: ${{ secrets.EMAIL_USERNAME }}
