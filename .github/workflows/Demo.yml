@@ -6,7 +6,7 @@ on:
       email_date:
         description: 'Date of the email (format: YYYY-MM-DD)'
         required: true
-        default: '01:01:2024'
+        default: '01.01.2024'
       email_SRT:
         description: 'Enter the SRT Number'
         required: true
