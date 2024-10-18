@@ -1,4 +1,4 @@
-name: Send Email Manually
+name: Send Email DEMO
 
 on:
   workflow_dispatch:
