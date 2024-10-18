@@ -6,15 +6,14 @@ on:
       email_date:
         description: 'Date of the email (format: YYYY-MM-DD)'
         required: true
-        default: $(date +%Y-%m-%d)
+        default: '01:01:2024'
       email_SRT:
         description: 'Enter the SRT Number'
         required: true
-        default: "ABC123"
+        default: "Z_SRT123"
       email_application:
         description: 'Enter the application'
         required: true
-        default: "unix"
         type: choice
         options:
           - Unix
