@@ -1,7 +1,17 @@
-name: Email For Fasttrack
+name: Send Email Manually
+
 on:
   workflow_dispatch:
-
+    inputs:
+      email_date:
+        description: 'Date of the email (format: YYYY-MM-DD)'
+        required: true
+        default: $(date +%Y-%m-%d)
+      inputs: 
+      email_SRT:
+         description: 'Emter the SRT Number'
+         required: true
+         default: "ABC123"
 jobs:
   send_email:
     runs-on: ubuntu-latest
@@ -11,9 +21,9 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 587
-          username: ${{ secrets.EMAIL_USERNAME }} 
+          username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: 'KIAS2000 Migration Mail'
-          body: 'Hello , How Are you!'
-          to: ${{secrets.EMAIL_TO }}
+          subject: 'KIAS2000 Migration on ${{ github.event.inputs.email_date }} '
+          body: 'This email was sent manually via GitHub Actions.'
+          to: crownardio@gmail.com
           from: ${{ secrets.EMAIL_USERNAME }}
