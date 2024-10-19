@@ -43,5 +43,5 @@ jobs:
 
                Regards,
                Tejas
-          to: crownardio@gmail.com
+          to: crownardio@gmail.com, kawsahiba@gmail.com
           from: ${{ secrets.EMAIL_USERNAME }}
