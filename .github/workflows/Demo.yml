@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       email_date:
-        description: 'Date of the email (format: YYYY-MM-DD)'
+        description: 'Date of the email'
         required: true
         default: '01.01.2024'
       email_SRT:
