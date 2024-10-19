@@ -21,7 +21,7 @@ on:
           - Unix and Citrix
 jobs:
   send_email:
-    runs-on: ubuntu-linux
+    runs-on: ubuntu-latest
     steps:
       - name: Send Email
         uses: dawidd6/action-send-mail@v3
