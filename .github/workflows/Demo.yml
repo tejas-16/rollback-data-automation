@@ -11,13 +11,6 @@ on:
         description: 'Enter the SRT Number'
         required: true
         default: "Z_SRT123"
-      email_type:
-        description: 'Select the type of email'
-        required: true
-        type: choice
-        options:
-          - Migration Availability 
-          - Sanity Status
       email_application:
         description: 'Enter the application'
         required: true
@@ -31,7 +24,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Email
-        if: ${{ github.event.inputs.email_type == 'Migration' }}
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
