@@ -1,4 +1,4 @@
-name: Send Email DEMO 
+name: Send Email DEMO   
 
 on:
   workflow_dispatch:
