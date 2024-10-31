@@ -32,16 +32,16 @@ jobs:
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: 'KIAS2000 Migration on ${{ github.event.inputs.email_date }} | ${{ github.event.inputs.email_SRT }} | Fasttrack'
           body: | 
-               Hello Team, 
-               Tommorow, We have ${{ github.event.inputs.email_application}} FastTrack planned at 6 CET.
-              
-               The Binaries listed in attached html file is going to deploy in this FastTrack.
-               
-               Please confirm, if you have any activity during that time span.
-
-               Kindly share SPOC's details for Sanity purpose.
-
-               Regards,
+               <html>
+               <body>
+               Hello Team,<br><br>
+               Tomorrow, we have <span style="font-family: Arial; font-size: 16px;">${{ github.event.inputs.email_application }}</span> FastTrack planned at 6 CET.<br><br>
+               The binaries listed in the attached HTML file are going to be deployed in this FastTrack.<br><br>
+               Please confirm if you have any activity during that time span.<br><br>
+               Kindly share SPOC's details for sanity purposes.<br><br>
+               Regards,<br>
                Tejas
+               </body>
+               </html>
           to: crownardio@gmail.com
           from: ${{ secrets.EMAIL_USERNAME }}
