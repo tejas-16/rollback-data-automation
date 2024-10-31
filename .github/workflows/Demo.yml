@@ -45,3 +45,4 @@ jobs:
                </html>
           to: crownardio@gmail.com
           from: ${{ secrets.EMAIL_USERNAME }}
+          content_type: 'text/html'
