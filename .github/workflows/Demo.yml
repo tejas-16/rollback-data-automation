@@ -31,7 +31,7 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: 'KIAS2000 Migration on ${{ github.event.inputs.email_date }} | ${{ github.event.inputs.email_SRT }} | Fasttrack'
-          body:|
+          body: |
                <html>
                <head>
                  <style>
