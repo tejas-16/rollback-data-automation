@@ -31,11 +31,19 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: 'KIAS2000 Migration on ${{ github.event.inputs.email_date }} | ${{ github.event.inputs.email_SRT }} | Fasttrack'
-          body: | 
+          body:|
                <html>
+               <head>
+                 <style>
+                   .application-name {
+                     font-family: Arial, sans-serif;
+                     font-size: 16px;
+                   }
+                 </style>
+               </head>
                <body>
                Hello Team,<br><br>
-               Tomorrow, we have <span style="font-family: Arial; font-size: 16px;">${{ github.event.inputs.email_application }}</span> FastTrack planned at 6 CET.<br><br>
+               Tomorrow, we have <span class="application-name">${{ github.event.inputs.email_application }}</span> FastTrack planned at 6 CET.<br><br>
                The binaries listed in the attached HTML file are going to be deployed in this FastTrack.<br><br>
                Please confirm if you have any activity during that time span.<br><br>
                Kindly share SPOC's details for sanity purposes.<br><br>
@@ -44,5 +52,27 @@ jobs:
                </body>
                </html>
           to: crownardio@gmail.com
-          from: ${{ secrets.EMAIL_USERNAME }}
+          from: ${{ secrets.EMAIL_USERNAME }}
+          content_type: 'text/html'|
+               <html>
+               <head>
+                 <style>
+                   .application-name {
+                     font-family: Arial, sans-serif;
+                     font-size: 16px;
+                   }
+                 </style>
+               </head>
+               <body>
+               Hello Team,<br><br>
+               Tomorrow, we have <span class="application-name">${{ github.event.inputs.email_application }}</span> FastTrack planned at 6 CET.<br><br>
+               The binaries listed in the attached HTML file are going to be deployed in this FastTrack.<br><br>
+               Please confirm if you have any activity during that time span.<br><br>
+               Kindly share SPOC's details for sanity purposes.<br><br>
+               Regards,<br>
+               Tejas
+               </body>
+               </html>
+          to: crownardio@gmail.com
+          from: ${{ secrets.EMAIL_USERNAME }}
           content_type: 'text/html'
