@@ -7,18 +7,18 @@ on:
         description: 'Date of the email (format: YYYY-MM-DD)'
         required: true
         default: $(date +%Y-%m-%d)
-jobs:
-  send_email:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Send Email
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.gmail.com
-          server_port: 587
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: 'KIAS2000 Migration on ${{ github.event.inputs.email_date }} '
-          body: 'This email was sent manually via GitHub Actions.'
-          to: crownardio@gmail.com
-          from: ${{ secrets.EMAIL_USERNAME }}
+#jobs:
+#  send_email:
+#   runs-on: ubuntu-latest
+#    steps:
+#     - name: Send Email
+#        uses: dawidd6/action-send-mail@v3
+#        with:
+#          server_address: smtp.gmail.com
+ #         server_port: 587
+  #        username: ${{ secrets.EMAIL_USERNAME }}
+  #        password: ${{ secrets.EMAIL_PASSWORD }}
+   #       subject: 'KIAS2000 Migration on ${{ github.event.inputs.email_date }} '
+   #       body: 'This email was sent manually via GitHub Actions.'
+   #       to: crownardio@gmail.com
+    #      from: ${{ secrets.EMAIL_USERNAME }}
