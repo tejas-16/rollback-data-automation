@@ -1,0 +1,47 @@
+name: Filtered Rollback Report
+
+on:
+  workflow_dispatch:
+    inputs:
+      Application_and_Area:
+        description: "Filter by Application and Area (optional)"
+        required: false
+        type: string
+      Rollback_Ticket:
+        description: "Filter by Rollback Ticket (optional)"
+        required: false
+        type: string
+
+jobs:
+  send-filtered-report:
+    runs-on: github@de0822yr.dc-ratingen.de
+    steps:
+    - name: Checkout branch
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.ref_name }}
+        fetch-depth: 0
+    - name: Run filtering script
+      env:
+        FILTER_MODE: true
+        App_Area: ${{ github.event.inputs.Application_and_Area }}
+        Ticket: ${{ github.event.inputs.Rollback_Ticket }}
+      run: |
+          echo "App_Area='${App_Area}'"
+          echo "Ticket='${Ticket}'"
+          python3 Bin/filtered_data.py
+          
+    - name: Upload filtered CSV
+      uses: actions/upload-artifact@v3
+      with:
+        name: filtered_rollback_data
+        path: filtered_rollback_data.csv
+
+#    - name: Send filtered report via mailx
+#      run: |
+#        echo "Hello Team,
+#
+#        Please find the filtered rollback report attached.
+#
+#        Regards,
+#        Tejas" | mailx -a filtered_rollback_data.csv -s "Filtered Rollback Report" -r "tejas.vinchurkar@vodafone.com" tejas.vinchurkar@vodafone.com
