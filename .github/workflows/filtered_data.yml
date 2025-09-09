@@ -37,11 +37,10 @@ jobs:
         name: filtered_rollback_data
         path: filtered_rollback_data.csv
 
-#    - name: Send filtered report via mailx
-#      run: |
-#        echo "Hello Team,
-#
-#        Please find the filtered rollback report attached.
-#
-#        Regards,
-#        Tejas" | mailx -a filtered_rollback_data.csv -s "Filtered Rollback Report" -r "tejas.vinchurkar@vodafone.com" tejas.vinchurkar@vodafone.com
+    - name: Send filtered report via mailx
+      run: |
+        echo "Hello Team,
+        Please find the filtered rollback report attached.
+
+        Regards,
+        Tejas" | mailx -a filtered_rollback_data.csv -s "Filtered Rollback Report" -r "tejas.vinchurkar@vodafone.com" tejas.vinchurkar@vodafone.com
