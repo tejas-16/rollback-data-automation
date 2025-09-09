@@ -1,33 +1,19 @@
-name: Add Rollback Data
+name: Filtered Rollback Report
+
 on:
   workflow_dispatch:
     inputs:
       Application_and_Area:
-        description: "Rollback happened for which Application and Area"
-        required: true
-        type: string  
+        description: "Filter by Application and Area (optional)"
+        required: false
+        type: string
       Rollback_Ticket:
-        description: "Rollback Ticket"
-        required: true
+        description: "Filter by Rollback Ticket (optional)"
+        required: false
         type: string
-      Rollback_Reason:
-        description: "Please give the reason for Rollback"
-        required: true
-        type: string
-      Incident_Ticket:
-        description: "Any Incident raised for the rollback"
-        required: true
-        type: string
-      Rollback_Date:
-        description: "Date in DD:MM:YYYY"
-        required: true
-        type: string
-      Business_impact:
-        description: "Business Impact happened?"
-        required: true
-        type: string
+
 jobs:
-  update-csv:
+  send-filtered-report:
     runs-on: github@de0822yr.dc-ratingen.de
     steps:
     - name: Checkout branch
@@ -35,20 +21,27 @@ jobs:
       with:
         ref: ${{ github.ref_name }}
         fetch-depth: 0
-    - name: Run rollback append script
+    - name: Run filtering script
       env:
+        FILTER_MODE: true
         App_Area: ${{ github.event.inputs.Application_and_Area }}
         Ticket: ${{ github.event.inputs.Rollback_Ticket }}
-        Reason: ${{ github.event.inputs.Rollback_Reason }}
-        Incident: ${{ github.event.inputs.Incident_Ticket }}
-        Date: ${{ github.event.inputs.Rollback_Date }}
-        Impact: ${{ github.event.inputs.Business_impact }}
       run: |
-        python3 Bin/rollback_data.py
-    - name: Commit & Push CSV
+          echo "App_Area='${App_Area}'"
+          echo "Ticket='${Ticket}'"
+          python3 Bin/filtered_data.py
+          
+    - name: Upload filtered CSV
+      uses: actions/upload-artifact@v3
+      with:
+        name: filtered_rollback_data
+        path: filtered_rollback_data.csv
+
+    - name: Send filtered report via mailx
       run: |
-          git config user.name "tejas-vinchurkar1"
-          git config user.email "tejas.vinchurkar@vodafone.com"
-          git add rollback_data.csv
-          git commit -m "Add rollback entry"
-          git push origin dev
+        echo "Hello Team,
+
+        Please find the filtered rollback report attached.
+
+        Regards,
+        Tejas" | mailx -a filtered_rollback_data.csv -s "Filtered Rollback Report" -r "tejas.vinchurkar@vodafone.com" tejas.vinchurkar@vodafone.com
