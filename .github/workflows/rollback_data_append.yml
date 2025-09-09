@@ -14,7 +14,7 @@ on:
 
 jobs:
   send-filtered-report:
-    runs-on: github@de0822yr.dc-ratingen.de
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout branch
       uses: actions/checkout@v3
