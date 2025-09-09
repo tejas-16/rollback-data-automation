@@ -1,0 +1,25 @@
+name: Rollback Report
+
+on:
+  schedule:
+    - cron: '50 6 9 9 *'  # 12:20 PM IST on 9th September (today)
+  workflow_dispatch:
+
+jobs:
+  send-report:
+    runs-on: github@de0822yr.dc-ratingen.de
+
+    steps:
+    - name: Checkout main branch
+      uses: actions/checkout@v3
+      with:
+        ref: main
+        fetch-depth: 0
+    - name: Send email
+      run: |
+        echo "Hello Team,
+
+        Please find the attached rollback data.
+
+        Regards,
+        Tejas" | mailx -a rollback_data.csv -s "Rollback Data" -r "tejas.vinchurkar@vodafone.com" tejas.vinchurkar@vodafone.com
