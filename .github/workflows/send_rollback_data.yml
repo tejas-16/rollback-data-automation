@@ -7,7 +7,7 @@ on:
 
 jobs:
   send-report:
-    runs-on: github@de0822yr.dc-ratingen.de
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout main branch
